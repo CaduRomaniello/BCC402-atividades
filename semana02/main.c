@@ -29,6 +29,7 @@ int main(){
             x = abs(sequence[i] - sequence[i+1]);
 
             if (x <= 0 || x > (n-1) || diff[x-1]){
+                missingNumber = true;
                 break;
             }
             else{

@@ -100,6 +100,10 @@ int main(){
     scanf("%d\n\n", &numberOfCases);
 
     for (int i = 0; i < numberOfCases; i++){
+        
+        if (i != 0){ // caso for necessário fazer a tradução mais de uma vez os blocos de frases devem ser separados por uma linha em branco
+            printf("\n");
+        }
 
         for (int i = 0; i < ALPHABET_SIZE; i++){ // iniciando o alfabeto com '\0' para fazer verificacoes futuras
             alphabet[i] = '\0';

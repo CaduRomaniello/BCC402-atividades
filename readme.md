@@ -31,7 +31,7 @@ Os problemas estão organizados nesse repositório em diretórios separados. A e
 >Dentro do diretório ```src``` ficarão os arquivos do código fonte;
 
 >No diretório ```raíz``` teremos:
->>o enunciado do problema
+>>um arquivo ```.pdf``` com o enunciado do problema
 >
 >>um arquivo ```.d``` com instruções apra execução
 >

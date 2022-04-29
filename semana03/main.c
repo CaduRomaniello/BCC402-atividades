@@ -10,18 +10,63 @@
 
 int readInput(char input[][81]){
 
-    int i = 0;
-    fgets(input[i], 80, stdin); // le uma string do STDIN de no maximo 80 caracteres
+    bool readLineBreak = false; // true caso o ultimo caractere lido seja \n
+    char c;                     // caractere atual
+    int row = 0, column = 0;    // linha e coluna atuais
+    int scanfFailureCheck;      // retorno da funcao scanf
 
-    /*
-    a condição do while é ser != de '\0' pois o '\0' é para a string o que o NULL é para os tipos numéricos
-    */
-    while(input[i][0] != '\0'){ // enquanto puder ler alguma string, a leitura continua
-        i++;
-        fgets(input[i], 80, stdin);
+    while(true){ // o loop executa ate q uma das condicoes de parada seja atingida
+        do{
+            scanfFailureCheck = scanf("%c", &c);
+        } while (c == 13); // esse loop evita a leitura de caracteres indesejados
+
+        if (scanfFailureCheck == -1){ // caso ocorra um erro na leitura inserimos o \0 no final da ultima frase e encerramos a funcao
+            input[row][column] = '\0';
+            row++;
+            return row;
+        }
+
+        input[row][column] = c;              // aramzenando o caractere lido na matriz
+
+        if (c == '\n'){                      // caso o caractere lido seja \n
+            if (readLineBreak){              // caso o caractere lido anteriormente tambem seja \n
+                input[row][column] = '\0';   // colocamos \0 a palavra atual
+                row++;                       // atualizamos a quantidade de frases lidas
+                return row;                  // retornamos a quantidade de frases lidas
+            }
+            else{                            // caso o caractere lido anteriormente nao seja \n
+                readLineBreak = true;        // atualizamos a flag
+                input[row][column+1] = '\0'; // colocamos \0 na palavra atual
+                row++;                       // vamos para a proxima frase
+                column = 0;                  // resetamos o contador das colunas
+            }
+        }
+        else{                                // caso o caractere lido nao seja /n
+            column++;                        // atualizamos o contador das colunas
+            readLineBreak = false;           // atualizamos a flag
+        }
     }
 
-    return i; // retorna a quantidade de frases lidas
+    /*
+        a funcao abaixo funcionou nos computadores do laboratorio para realizar a leitura do input
+        porem, na minha maquina pessoal foi necessario lidar com a presenca de caracteres indesejados
+        por isso a leitura na funcao de cima foi feita caractere por caractere
+    */
+
+    //////////////////////////////////////////////////////////////////////////
+
+    // int i = 0;
+    // fgets(input[i], 80, stdin); // le uma string do STDIN de no maximo 80 caracteres
+
+    // /*
+    // a condição do while é ser != de '\0' pois o '\0' é para a string o que o NULL é para os tipos numéricos
+    // */
+    // while(input[i][0] != '\0'){ // enquanto puder ler alguma string, a leitura continua
+    //     i++;
+    //     fgets(input[i], 80, stdin);
+    // }
+
+    // return i; // retorna a quantidade de frases lidas
 
 }
 
@@ -100,6 +145,10 @@ int main(){
     scanf("%d\n\n", &numberOfCases);
 
     for (int i = 0; i < numberOfCases; i++){
+
+        for(int j = 0; j < 100; j++){
+            input[j][0] = '\0';
+        }
         
         if (i != 0){ // caso for necessário fazer a tradução mais de uma vez os blocos de frases devem ser separados por uma linha em branco
             printf("\n");
@@ -115,7 +164,7 @@ int main(){
         matchLetters(input, alphabet, keyPhrasePosition);               // faz o casamento das letras
 
         for (int j = 0; j < numberOfPhrases;j++){ // printa as frases traduzidas de acordo com o alfabeto "novo"
-            for (int k = 0; k < strlen(input[j]) - 1; k++){
+            for (int k = 0; k < strlen(input[j]); k++){
                 if (input[j][k] == ' '){
                     printf(" ");
                 }
@@ -126,8 +175,8 @@ int main(){
                     printf("%c", alphabet[input[j][k] - 97]);
                 }
             }
-            printf("\n");
         }
+        printf("\n");
 
     }
 
@@ -135,3 +184,6 @@ int main(){
 
     return 0;
 }
+
+// frtjrpgguvj otvxmdxd prm iev prmvx xnmqq
+// programming contests are fun arent the

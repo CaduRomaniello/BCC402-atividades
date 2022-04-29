@@ -1,0 +1,15 @@
+I 5 5
+L 2 3 L
+S L.bpm
+C
+V 2 2 4 L
+S V.bpm
+C
+H 2 4 2 L
+S H.bpm
+C
+K 2 2 4 4 L
+S K.bpm
+F 3 3 Y
+S F.bpm
+X

@@ -2,4 +2,37 @@
 
 Todos os códigos desenvolvidos para a resolução dos problemas estão disponíveis no [GitHub](https://github.com/CaduRomaniello/BCC402-atividades). O repositório está dividido de acordo com os problemas resolvidos.
 
-Dentro de cada diretório se encontram, na maioria das vezes, o código fonte, um arquivo ```.pdf``` que é o enunciado, um arquivo ```.sh``` que é um script para o ```bash```, um arquivo ```.in``` que contém os dados de entrada, um arquivo ```.out``` que é o resultado produzido após a execução do programa e um arquivo ```.md``` que possui instruções para a execução do programa.
+Os problemas estão organizados nesse repositório em diretórios separados. A estrutura padrão deles é a seguinte:
+
+```
+📂problema
+┣ 📂bin
+┃ ┗ 📜executáveis ficarão aqui
+┣ 📂data
+┃ ┣ 📂input
+┃ ┃ ┗ 📜arquivos contendo os dados de entrada
+┃ ┗ 📂output
+┃   ┗ 📜arquivos contendo os dados de saída
+┣ 📂src
+┃ ┗ 📜código fonte
+┣ 📜.pdf
+┣ 📜.md
+┣ 📜.bat
+┗ 📜.sh
+```
+
+>Dentro do diretório ```bin``` ficarão todos os arquivos executáveis que serão gerados após a compilação;
+
+>Dentro do diretório ```data``` ficarão todos os arquivos que contém dados
+>>no diretório ```input``` ficarão os dados de entrada;
+>
+>>no diretório ```output``` ficarão os dados de saída;
+
+>Dentro do diretório ```src``` ficarão os arquivos do código fonte;
+
+>No diretório ```raíz``` teremos:
+>>o enunciado do problema
+>
+>>um arquivo ```.d``` com instruções apra execução
+>
+>>e dois scripts, um ```.sh``` e um ```.bat```.
